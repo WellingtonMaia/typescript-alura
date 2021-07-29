@@ -13,13 +13,19 @@ export class NegociacaoController {
   private mensagemView = new MensagemView('#mensagemView');
 
   constructor() {
-    this.inputData = document.querySelector('#data');
-    this.inputQuantidade = document.querySelector('#quantidade');
-    this.inputValor = document.querySelector('#valor');
+    this.inputData = <HTMLInputElement>document
+      .querySelector('#data');
+    this.inputQuantidade = document
+      .querySelector('#quantidade') as HTMLInputElement;
+    this.inputValor = document
+      .querySelector('#valor') as HTMLInputElement;
     this.negociacoesView.update(this.negociacoes);
   }
 
   public adicionar(): void {
+    
+    if (!this.dadosSaoValidos()) return;
+
     const negociacao = Negociacao.criarInstancia(
       this.inputData.value,
       this.inputQuantidade.value,
@@ -51,5 +57,11 @@ export class NegociacaoController {
   private ehDiaUtil(data: Date): boolean {
     return ( data.getDay() > DiasDaSemanda.DOMINGO 
     && data.getDay() < DiasDaSemanda.SABADO);
+  }
+
+  private dadosSaoValidos() {
+    return (this.inputData !== null
+      && this.inputQuantidade != null
+      && this.inputValor != null)
   }
 }
