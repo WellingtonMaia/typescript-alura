@@ -2,9 +2,6 @@ import { Negociacoes } from "../models/negociacoes.js";
 import { View } from "./view.js";
 
 export class NegociacoesView extends View<Negociacoes> {
-  constructor(selector: string) {
-     super(selector);
-  }
 
   protected template(model: Negociacoes): string {
     return `
