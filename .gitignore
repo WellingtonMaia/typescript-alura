@@ -1,4 +1,5 @@
 /node_modules
 /servidor-api/node_modules
 /.vscode
-/dist/js/*
+/app/dist/js/*
+/app/dist/jst/*
